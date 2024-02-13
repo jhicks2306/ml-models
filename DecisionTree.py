@@ -47,7 +47,7 @@ class DecisionTree:
         Parameters
         ----------
         X: array of shape (n_samples, n_features)
-        y: 1-d array of target values, shape (n_samples,
+        y: 1-d array of target values, shape (n_samples,)
          
         '''
         # Use minimum of available features and optionally specified by user.
