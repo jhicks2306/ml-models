@@ -2,11 +2,12 @@ import numpy as np
 from collections import Counter
 
 class Node:
-    def __init__(self, feature=None, left=None, right=None,*, value=None):
+    def __init__(self, feature=None, threshold= None, left=None, right=None, *, value=None):
         self.feature = feature
+        self.threshold = threshold
         self.left = left
         self.right = right
-        self.value = None
+        self.value = value
     
     def is_leaf_node(self):
         return self.value is not None
@@ -37,6 +38,7 @@ class DecisionTree:
         self.max_depth = max_depth
         self.n_features = n_features
         self.root = None
+        self.random_generator = np.random.default_rng(seed=23)
 
     def fit(self, X, y):
         '''
@@ -65,7 +67,7 @@ class DecisionTree:
             leaf_value = self._most_common_label(y) # A leaf's value is the most common label.
             return Node(value=leaf_value)
         
-        feat_idxs = np.random.Generator.choice(a=n_features, size=self.n_features, replace=True)
+        feat_idxs = self.random_generator.choice(a=n_features, size=self.n_features, replace=True)
 
         # Find the best split
         best_feature_idx, best_split_thr = self._best_split(X, y, feat_idxs)
@@ -105,7 +107,7 @@ class DecisionTree:
         '''Calculates the information gain between the parent and child Nodes.'''
 
         # Parent entropy
-        parent_entropy = self._entropy
+        parent_entropy = self._entropy(y)
 
         # Create children
         left_idxs, right_idxs = self._split(X_col, thr)
