@@ -129,7 +129,7 @@ class DecisionTree:
         '''
         Predict label values given array X.
         '''
-        np.array([self._traverse_tree(x) for x in X])
+        np.array([self._traverse_tree(x, self.root) for x in X])
 
     def _traverse_tree(self, x, node):
         '''
