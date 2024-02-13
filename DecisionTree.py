@@ -13,6 +13,24 @@ class Node:
     
 class DecisionTree:
     '''
+    A Decision Tree classifier class.
+
+    Parameters
+    ----------
+    min_samples_split: int
+        Minimum number of samples that must be within a leaf node, otherwise a split will not take place.
+    max_depth: int
+        Maximum depth a tree is allowed to reach.
+    n_features: int
+        Number of features used to build the Decision Tree.
+
+    Methods
+    -------
+    fit(X, y)
+        Fit a Decision Tree to array of features X and target values y.
+    predict(X)
+        Predict target values on a set of features X.
+
     '''
     def __init__(self, min_samples_split=2, max_depth=10, n_features=None):
         self.min_samples_split = min_samples_split
@@ -21,6 +39,15 @@ class DecisionTree:
         self.root = None
 
     def fit(self, X, y):
+        '''
+        Fit a Decision Tree class to array of features X and target values y 
+
+        Parameters
+        ----------
+        X: array of shape (n_samples, n_features)
+        y: 1-d array of target values, shape (n_samples,
+         
+        '''
         # Use minimum of available features and optionally specified by user.
         self.n_features = X.shape[1] if not self.n_features else min(X.shape[1], self.n_features)
         self.root = self._grow_tree(X, y)
@@ -127,9 +154,18 @@ class DecisionTree:
 
     def predict(self, X):
         '''
-        Predict label values given array X.
+        Predict label values given array of features X.
+
+        Parameters
+        ----------
+        X: array of shape (n_samples, n_features)
+
+        Returns
+        -------
+        Predictions: 1-d numpy array of predicted labels.
+
         '''
-        np.array([self._traverse_tree(x, self.root) for x in X])
+        return np.array([self._traverse_tree(x, self.root) for x in X])
 
     def _traverse_tree(self, x, node):
         '''
