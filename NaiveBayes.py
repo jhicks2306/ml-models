@@ -7,7 +7,7 @@ class NaiveBayes:
     Methods
     -------
     fit(X, y)
-        Fit a Decision Tree to array of features X and target values y.
+        Fit a Naive Bayes to array of features X and target values y.
     predict(X)
         Predict target values on a set of features X.
 
@@ -23,7 +23,7 @@ class NaiveBayes:
 
         Returns
         -------
-        Fitted Naive Bayers classifer ready for runnning .predict(X)
+        Fitted Naive Bayes classifer ready for runnning .predict(X)
          
         '''
         n_samples, n_features = X.shape
