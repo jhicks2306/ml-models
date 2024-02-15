@@ -21,7 +21,7 @@ class SVM:
 
     def fit(self, X, y):
         '''
-        Fit a Perceptron classifier to array of features X and target values y 
+        Fit a SVM classifier to array of features X and target values y 
 
         Parameters
         ----------
@@ -30,7 +30,7 @@ class SVM:
 
         Returns
         -------
-        Fitted Perceptron classifer ready for runnning .predict(X)
+        Fitted SVM classifer ready for runnning .predict(X)
          
         '''
         n_samples, n_features = X.shape

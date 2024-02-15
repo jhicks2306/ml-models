@@ -8,6 +8,13 @@ class Perceptron:
     '''
     A Perceptron classifier class.
 
+    Parameters
+    ----------
+    learning_rate: float
+        Hyperparameter to control the size of parameter updates
+    n_iters: int
+        Number of training iterations. 
+
     Methods
     -------
     fit(X, y)

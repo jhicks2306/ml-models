@@ -8,6 +8,7 @@ class PCA:
     ----------
     n_components: int
         The number of components onto which the data will be projected 
+        
     Methods
     -------
     fit(X)

@@ -5,6 +5,24 @@ def euclidian_distance(x1, x2):
     return np.sum(np.sqrt((x1-x2)**2))
 
 class Kmeans:
+    '''
+    A K means classifier class.
+
+    Parameters
+    ----------
+    K: int
+        The number clusters to generate when predicting labels.
+    max_iters: int
+        Maximum number of cycles before algorithm stops. (May stop earlier if stabilizes.) 
+    plot_steps: boolean
+        When True the clsssifier will plot each step of the prediction cycles.
+
+    Methods
+    -------
+    predict(X)
+        Predict target values on a set of features X.
+
+    '''
     def __init__(self, K=5, max_iters=100, plot_steps=False):
         self.K = K
         self.max_iters = max_iters
@@ -19,6 +37,18 @@ class Kmeans:
 
 
     def predict(self, X):
+        '''
+        Predict label values given array of features X.
+
+        Parameters
+        ----------
+        X: np.array of shape (n_samples, n_features)
+
+        Returns
+        -------
+        Predictions: 1-d np.array of predicted labels.
+
+        ''' 
         self.X = X
         self.n_samples, self.n_features = X.shape
 

@@ -1,6 +1,24 @@
 import numpy as np
 
 class LinearRegression:
+    '''
+    A Linear Regression classifier class.
+
+    Parameters
+    ----------
+    lr: float
+        Learning rate. A hyperparameter to control the size of parameter updates
+    n_iterations: int
+        Number of training iterations. 
+
+    Methods
+    -------
+    fit(X, y)
+        Fit a Linear Regression classifier to array of features X and target values y.
+    predict(X)
+        Predict target values on a set of features X.
+
+    '''
     
     def __init__(self, lr=0.001, n_iterations=1000):
         self.lr = lr
@@ -9,6 +27,19 @@ class LinearRegression:
         self.b = None
     
     def fit(self, X, y):
+        '''
+        Fit a Linear Regression classifier to array of features X and target values y 
+
+        Parameters
+        ----------
+        X: np.array of shape (n_samples, n_features)
+        y: 1-d np.array of target values, shape (n_samples,). Target values should be 0 or 1.
+
+        Returns
+        -------
+        Fitted Linear Regression classifer ready for runnning .predict(X)
+         
+        '''
         # Initiate weights and bias
         n_samples, n_features = X.shape
         self.W = np.zeros((n_features,1)) # dim is (n_features, 1)
@@ -29,4 +60,16 @@ class LinearRegression:
 
 
     def predict(self, X):
+        '''
+        Predict label values given array of features X.
+
+        Parameters
+        ----------
+        X: np.array of shape (n_samples, n_features)
+
+        Returns
+        -------
+        Predictions: 1-d np.array of predicted labels.
+
+        ''' 
         return np.dot(X, self.W) + self.b
